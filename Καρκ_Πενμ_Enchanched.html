@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Υπολογίστε το ρίσκο σας για τον καρκίνο του Πνεύμονα</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 600px;
+    height: 90%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+label {
+    font-weight: bold;
+    color: #555;
+}
+
+input[type="number"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#result {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Υπολογίστε το ρίσκο σας για τον καρκίνο του Πνεύμονα</h1>
+
+  <form id="lungCancerForm">
+    <label for="age">Ηλικία:</label><br>
+    <input type="radio" name="q0" value="A" required><span>12-18</span><br>
+    <input type="radio" name="q0" value="B" required><span>18-30</span><br>
+    <input type="radio" name="q0" value="C" required><span>30-45</span><br>
+    <input type="radio" name="q0" value="D" required><span>45-60</span><br>
+    <input type="radio" name="q0" value="E" required><span>60+</span><br>
+    <br>
+
+    <label for="history">Έχετε διαγνωστεί ποτέ με οποιοδήποτε είδος καρκίνου τα τελευταία 5 χρόνια;</label> <br>
+    <input type="radio" name="history" value="A" required><span>Ναι </span><br>
+    <input type="radio" name="history" value="B" required><span>Όχι </span><br>
+    <input type="radio" name="history" value="C" required><span>Δεν θέλω να πω </span><br>
+<br>
+    <label for="sex">Φύλο:</label><br>
+    <select id="sex" name="sex" required>
+      <option value="male">Αρσενικό</option>
+      <option value="female">Θηλυκό</option>
+    </select><br>
+<br>
+    <label for="heredity"> Έχετε συγγενείς οι οποίοι να έχουν νοσήσει ποτέ από καρκίνο του πνεύμονα;</label><br>
+    <select id="heredity" name="heredity" required>
+      <option value="Ναι">Ναι</option>
+      <option value="Όχι">Όχι</option>
+      <option value="Δεν ξέρω">Δεν γνωρίζω</option>
+    </select><br>
+<br>
+    <label for="smoking">Πόσα τσιγάρα καπνίζεται περίπου την ημέρα;</label><br>
+    <input type="radio" id="smoking" name="smoking" value= 0 required><span> Δεν καπνίζω</span><br>
+    <input type="radio" id="smoking" name="smoking" value= 1 required><span>1-4</span><br>
+    <input type="radio" id="smoking" name="smoking" value= 2 required><span>4-12</span><br>
+    <input type="radio" id="smoking" name="smoking" value= 3 required><span>12+</span><br>
+ <br>
+ 
+ <label for="smokingYears">Εδώ και πόσα χρόνια καπνίζεται; </label><br>
+ <input type="radio" id="smokingYears" name="smokingYears" value= 0 required><span> Δεν καπνίζω</span><br>
+ <input type="radio" id="smokingYears" name="smokingYears" value= 1 required><span> Λιγότερο από 1</span><br>
+ <input type="radio" id="smokingYears" name="smokingYears" value= 2 required><span>1-5</span><br>
+ <input type="radio" id="smokingYears" name="smokingYears" value= 3 required><span> 6-10</span><br>
+ <input type="radio" id="smokingYears" name="smokingYears" value= 4 required><span> 11-19</span><br>
+ <input type="radio" id="smokingYears" name="smokingYears" value= 5 required><span> 20+</span><br>
+ <br>
+
+
+    <label for="passSmoking">Βρίσκεστε συχνά κοντά σε καπνιστές; </label><br>
+    <select id="passSmoking" name="passSmoking" required>
+      <option value="πολύ">Πολύ συχνά</option>
+      <option value="συχνά">Συχνά</option>
+      <option value="μερικές_φορές">Μερικές φορές</option>
+      <option value="ποτέ">Ποτέ</option>
+    </select><br>
+<br>
+    <label for = "city">Ζείτε σε πόλη με περισσότερους από 100,000 κατοίκους;</label> <br>
+    <input type="radio" name="city" value="A" required><span>Ναι </span><br>
+    <input type="radio" name="city" value="B" required><span>Όχι </span><br>
+<br>
+
+    <label for = "Vegies"> Τρώτε τουλάχιστον 2-3 μερίδες φρούτα και λαχανικά την ημέρα;</label>
+    <select id="Vegies" name="Vegies" required>
+        <option value="ΝαιV">Ναι</option>
+        <option value="ΌχιV">Όχι</option>
+        <option value="Δεν ξέρω">Δεν γνωρίζω</option>
+      </select><br>
+
+    <button type="button" onclick="calculateRisk()">Υπολογισμός</button>
+  </form>
+
+  <div id="result"></div>
+
+</div>
+
+
+
+<script>
+function calculateRisk() {
+  var ageGroup = document.querySelector('input[name="q0"]:checked').value;
+  var history = document.querySelector('input[name="history"]:checked').value;
+  var heredity = document.getElementById("heredity").value;
+  var sex = document.getElementById("sex").value;
+  var smoking = parseInt(document.querySelector('input[name="smoking"]:checked').value); 
+  var smokingYears = parseInt(document.querySelector('input[name="smokingYears"]:checked').value); 
+  var passSmoking = document.getElementById("passSmoking").value;
+  var city = document.querySelector('input[name="city"]:checked').value;
+  var Vegies = document.getElementById("Vegies").value;
+  var riskScore = 0;
+
+  // Age Group
+  if (ageGroup === "A") {riskScore += 0}
+  else if (ageGroup === "B") {riskScore += 1}
+  else if (ageGroup === "C") {riskScore += 2}
+  else if (ageGroup === "D") {riskScore += 3}
+  else if (ageGroup === "E") {riskScore += 6}
+
+  // History
+  if (history === "A") {riskScore +=5}
+
+  // Sex
+  if (sex === "male") {
+    riskScore += 2;
+  }
+
+  // Heredity
+  if (heredity === "Ναι") {riskScore += 5;}
+
+  // Smoking
+  if (smoking === 1) {riskScore += 0}
+  else if (smoking === 2) {riskScore += 5}
+  else if (smoking === 3) {riskScore += 7}
+
+  // smoking Time
+  if (smokingYears === 0) {riskScore += 0}
+  if (smokingYears === 1) {riskScore += 0}
+  if (smokingYears === 2 ) {riskScore += 2}
+  if (smokingYears === 3) {riskScore += 4}
+  if (smokingYears === 4) {riskScore += 5}
+  if (smokingYears === 5) {riskScore += 12}
+
+  // Pass Smoking
+  if (passSmoking === "πολύ") {riskScore += 2;}
+  else if (passSmoking === "συχνά") {riskScore += 1.5;}
+  else if (passSmoking === "μερικές_φορές") {riskScore += 1;}
+
+  // Environment
+  if (city === "A") {riskScore +=2}
+
+  // Vegies
+  if (Vegies === "ΌχιV") {riskScore += 2}
+   else {riskScore -=3}
+
+  // Final Risk Level
+  var riskLevel;
+  if (riskScore < 11) {
+    riskLevel = "Χαμηλό";
+  } else if (riskScore < 20) {
+    riskLevel = "Μέσο";
+  } else {
+    riskLevel = "Υψηλό";
+  }
+  
+  // Present the Result
+  var resultElement = document.getElementById("result");
+  resultElement.innerHTML = "Το ρίσκο σας είναι: " + riskLevel;
+}
+
+
+
+
+</script>
+
+</body>
+</html>
